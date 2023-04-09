@@ -24,6 +24,6 @@ public class Product {
     private String photo;
     private Integer size;
     private BigDecimal price;
-    private Integer preparation;
+    private Integer preparationTime;
     private CategoryEnum categoryId;
 }
