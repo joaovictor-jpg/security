@@ -9,7 +9,7 @@ public interface ProductService {
 
     Page<Product> getProducts(int page, int size);
     Product saveProduct(ProductDTO productDTO);
-    Optional<Product> getProduct(ProductDTO productDTO, Long id);
+    Product getProduct(ProductDTO productDTO, Long id);
     Product showByTitle(String title);
     Product updateProduct(ProductDTO productDTO, Long id);
     void deleteProduct(Long id);
