@@ -30,7 +30,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product getProduct(ProductDTO productDTO, Long id) {
+    public Product getProductById(ProductDTO productDTO, Long id) {
         return productRepository.findById(id).get();
     }
 
@@ -42,17 +42,17 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public Product updateProduct(ProductDTO productDTO, Long id) {
 
-        Product productId = productRepository.getReferenceById(id);
+        Product productId = productRepository.findById(id).get();
 
         return productRepository.save(Product.builder()
                 .id(productId.getId())
-                .title(productDTO.getTitle())
-                .description(productDTO.getDescription())
-                .photo(productDTO.getPhoto())
-                .size(productDTO.getSize())
-                .price(productDTO.getPrice())
+                .title(productDTO.title())
+                .description(productDTO.description())
+                .photo(productDTO.photo())
+                .size(productDTO.size())
+                .price(productDTO.price())
                 .preparation(productDTO.preparation())
-                .categoryId(productDTO.getCategoryEnum())
+                .categoryId(productDTO.categoryEnum())
                 .build());
     }
 
