@@ -2,6 +2,8 @@ package com.github.joaovictorjpg.codeblack.services.user;
 
 import com.github.joaovictorjpg.codeblack.model.Enum.RoleEnum;
 import com.github.joaovictorjpg.codeblack.model.entity.User;
+import com.github.joaovictorjpg.codeblack.utils.GeneralUtilies;
+import jakarta.persistence.GeneratedValue;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -32,7 +34,7 @@ public record UserDTO(
                 null,
                 this.email,
                 this.username,
-                this.password,
+                GeneralUtilies.encide(this.password),
                 LocalDateTime.now(),
                 LocalDateTime.now(),
                 RoleEnum.STAFF
