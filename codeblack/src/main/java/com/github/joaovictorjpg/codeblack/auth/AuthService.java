@@ -25,7 +25,7 @@ public class AuthService {
     @Autowired
     private UserService userService;
     @Autowired
-    private UserDetailsService userDetailsService
+    private UserDetailsService userDetailsService;
 
     public Response registre(UserDTO userDTO, String role) {
         User user = userService.postUser(userDTO,role);

@@ -10,10 +10,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+@Component
 public class AuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
@@ -31,15 +33,15 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         final String jwt;
         final String userEmail;
 
-        if(authHeader == null || authHeader.startsWith("Bearer ")) {
+        if(authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        jwt = authHeader.replace("Bearer ", "");
+        jwt = authHeader.substring(7);
         userEmail = jwtService.extractUsername(jwt);
 
-        if(userEmail == null && SecurityContextHolder.getContext().getAuthentication() == null) {
+        if(userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             authenticateToken(request, jwt, userEmail);
         }
 

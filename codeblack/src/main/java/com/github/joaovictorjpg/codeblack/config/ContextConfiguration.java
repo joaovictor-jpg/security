@@ -40,9 +40,9 @@ public class ContextConfiguration {
     }
 
     @Bean
-    private UserDetailsService UserDetailsService() {
+    public UserDetailsService UserDetailsService() {
         return username -> userRepository.findByEmail(username).or(
-                () -> userRepository.findByEmail(username)
+                () -> userRepository.findByUsername(username)
         ).orElseThrow(
                 () -> new UsernameNotFoundException("User not found")
         );

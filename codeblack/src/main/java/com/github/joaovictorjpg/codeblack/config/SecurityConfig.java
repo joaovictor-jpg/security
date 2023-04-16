@@ -36,6 +36,10 @@ public class SecurityConfig {
                                     .permitAll();
                             auth.requestMatchers(HttpMethod.POST, "/api/users/post/**")
                                     .hasAuthority("STAFF");
+                            auth.requestMatchers(HttpMethod.POST, "/api/auth/register/{role}")
+                                            .permitAll();
+                            auth.requestMatchers(HttpMethod.POST, "/api/auth/login")
+                                            .permitAll();
                             auth.anyRequest().authenticated();
                         }
                 )
