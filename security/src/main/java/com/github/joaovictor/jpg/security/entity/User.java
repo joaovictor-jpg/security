@@ -1,5 +1,6 @@
 package com.github.joaovictor.jpg.security.entity;
 
+import com.github.joaovictor.jpg.security.entity.role.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
