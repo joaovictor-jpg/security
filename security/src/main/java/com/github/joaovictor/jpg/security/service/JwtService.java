@@ -19,7 +19,7 @@ public class JwtService {
 
     private static final String SECURITY_KEY = "404E635266556A576E5A7234753778214125442A472D4B6150645367566B5970";
 
-    public String gereteToken(UserDetails userDetails) {
+    public String genereteToken(UserDetails userDetails) {
         return genereteToken(new HashMap<>(), userDetails);
     }
 
